@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Entities.Entities.ApplicationUser> SignInManager
+@inject UserManager<Entities.Entities.ApplicationUser> UserManager
+
+<ul class="navbar-nav me-xs-auto d-lg-flex align-items-lg-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Bem Vindo <br> @User.Identity.Name</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn p-0 text-primary" asp-area="" asp-controller="Produtos" asp-action="ListarProdutosCarrinhoUsuario">
+                <i class="bi bi-bag-fill"></i>
+                <span id="qtdCarrinho"></span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-primary"><i class="bi bi-box-arrow-in-right" style="font-size: 25px;"></i></button>
+            </form>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item mr-3">
+            <a class="btn p-0 text-primary" asp-area="Identity" asp-page="/Account/Login">
+                <span class="d-flex align-items-center">
+                    <i class="bi bi-person-circle pe-2 m-2"></i>
+                    <p class="person-circle-text m-0 p-0">
+                        Bem-vindo!
+                        <br>
+                        Entre ou cadastre-se
+                    </p>
+                </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="btn p-0 text-primary" asp-area="" asp-controller="Produtos" asp-action="ListarProdutosCarrinhoUsuario">
+                <i class="bi bi-bag-fill"></i>
+                <span id="qtdCarrinho"></span>
+            </a>
+        </li>
+    }
+</ul>

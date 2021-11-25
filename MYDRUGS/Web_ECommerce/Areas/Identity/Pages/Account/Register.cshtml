@@ -1,0 +1,95 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <section class="text-center">
+        @{
+            if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            {
+                <div>
+                    <p>
+                        Cadastre-se na Loja Virtual para encontrar todos os produtos que você precisa
+                    </p>
+                </div>
+            }
+        }
+    </section>
+    <form asp-route-returnUrl="@Model.ReturnUrl" method="post" class="row bg-white gy-4 my-4 p-4">
+        <h4 class="mb-2 text-center">Preencha os campos abaixo</h4>
+        <div class="col-md-6">
+            <label asp-for="Input.Email"></label>*
+            <input asp-for="Input.Email" class="form-control" />
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.Nome"></label>*
+            <input asp-for="Input.Nome" class="form-control" />
+            <span asp-validation-for="Input.Nome" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.CPF"></label>*
+            <input asp-for="Input.CPF" class="form-control" />
+            <span asp-validation-for="Input.CPF" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.Idade"></label>*
+            <input asp-for="Input.Idade" class="form-control" />
+            <span asp-validation-for="Input.Idade" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.Endereco"></label>*
+            <input asp-for="Input.Endereco" class="form-control" />
+            <span asp-validation-for="Input.Endereco" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.ComplementoEndereco"></label>
+            <input asp-for="Input.ComplementoEndereco" class="form-control" />
+            <span asp-validation-for="Input.ComplementoEndereco" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.CEP"></label>*
+            <input asp-for="Input.CEP" class="form-control" />
+            <span asp-validation-for="Input.CEP" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.Celular"></label>
+            <input asp-for="Input.Celular" class="form-control" />
+            <span asp-validation-for="Input.Celular" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.Telefone"></label>
+            <input asp-for="Input.Telefone" class="form-control" />
+            <span asp-validation-for="Input.Telefone" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Input.Senha"></label>*
+            <input asp-for="Input.Senha" class="form-control" />
+            <span asp-validation-for="Input.Senha" class="text-danger"></span>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Input.ConfirmarSenha"></label>*
+            <input asp-for="Input.ConfirmarSenha" class="form-control" />
+            <span asp-validation-for="Input.ConfirmarSenha" class="text-danger"></span>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary px-5">Cadastrar</button>
+        </div>
+    </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Pagina Inicial";
+}
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <div class="input-group my-5 justify-content-center">
+        <input type="text" style="font-size: 22px" class="form-control col-lg-6" id="descricao" placeholder="Buscar Produtos" arial-label="Buscar Produtos" arial-describedby="button-addon2" />
+        <div class="input-group-append">
+            <button class="btn p-0 border border-primary" type="button" id="buscar">
+                <span class="input-group-text bg-primary border-0 rounded-0">
+                    <i class="bi bi-search text-white" style="font-size: 22px"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+    <div class="row g-3" id="DivVenda"></div>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Entities.Entities.Produto>
+
+@{
+    ViewData["Title"] = "Cadastrar Produto";
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+
+<p>
+    <a class="btn bg-primary text-white" asp-action="Create">Cadastrar novo produto</a>
+</p>
+
+<div class="row">
+<div class="table-responsive p-4">
+    <table class="table bg-white">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>Imagem</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descricao)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QtdEstoque)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @{
+                        if (!string.IsNullOrWhiteSpace(item.Url))
+                        {
+                            <img width="80" height="80" src=@item.Url />
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtdEstoque)
+                </td>
+                @**@
+                <td class="d-flex gap-1">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "border-end border-1 border-primary px-2" })
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "border-end border-1 border-primary px-2" })
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id }, new { @class = "px-2" })
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>

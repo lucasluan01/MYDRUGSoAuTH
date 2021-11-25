@@ -1,0 +1,72 @@
+﻿@model Entities.Entities.Produto
+
+@{
+    ViewData["Title"] = "Detalhes do Produto";
+}
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-6 bg-white p-4">
+        <h4 class="mb-5">Detalhes do Produto</h4>
+        <dl class="row gy-3">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Descricao)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Descricao)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Observacao)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Observacao)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Valor)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Valor)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.QtdEstoque)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.QtdEstoque)
+            </dd>
+
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Estado)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DataCadastro)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DataCadastro)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.DataAlteracao)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.DataAlteracao)
+            </dd>
+        </dl>
+        <div class="mt-5 text-end">
+            <a class="btn btn-outline-secondary" asp-action="Index">Voltar para a lista</a>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary px-5" })
+        </div>
+    </div>
+</div>
+

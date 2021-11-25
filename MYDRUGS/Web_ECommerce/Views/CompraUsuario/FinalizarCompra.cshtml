@@ -1,0 +1,132 @@
+﻿@model Entities.Entities.CompraUsuario
+
+@{
+    ViewData["Title"] = "Finalizar Compra";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+
+    td {
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        border-bottom: 1px solid #000;
+    }
+
+    td > div {
+        max-width: 450px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .total {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .total > span {
+        margin-left: 20px;
+    }
+
+    :root {
+        --cor-primaria: #19196F;
+    }
+
+    .confirmar-compra {
+        background-color: #28A745;
+        padding: 10px 15px;
+        color: #fff;
+        font-weight: bold;
+        margin: auto;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .confirmar-compra:hover {
+        text-decoration: none;
+        color: #fff
+    }
+
+    .confirmar-compra:active {
+        background-color: #28A74580;
+    }
+</style>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <div class="row d-flex justify-content-center">
+        <div class="bg-white p-4 table-responsive">
+            <h1 class="my-4">Dados da Compra</h1>
+
+            <h2 class="my-4">Produtos</h2>
+            <table class="table bg-white">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th colspan="2">Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{float total = 0; }
+                    @foreach (var item in Model.ListaProdutos)
+                    {
+                        total += (float)item.Valor * item.QtdCompra;
+
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                <div>@Html.DisplayFor(modelItem => item.Descricao)</div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.QtdCompra)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Valor)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Remover", "RemoverCarrinho", new { id = item.IdProdutoCarrinho })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h2 class="my-4">Endereço</h2>
+
+            <dl class="row">
+
+                <dt class="col-sm-2">
+                    Logradouro
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EnderecoCompleto)
+                </dd>
+
+                <dt class="col-sm-2">
+                    CEP
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ApplicationUser.CEP)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-4" style="display:flex">
+        <a class="confirmar-compra" asp-area="" asp-controller="CompraUsuario" asp-action="ConfirmaCompra">Finalizar Compra</a>
+    </div>
